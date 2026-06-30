@@ -1,0 +1,51 @@
+{
+  "info": {
+    "_postman_id": "b58ae9ea-5cfc-4fd4-929e-e5990a774623",
+    "name": "Petstore API Local",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56283781",
+    "_collection_link": "https://go.postman.co/collection/56283781-b58ae9ea-5cfc-4fd4-929e-e5990a774623?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET Pet by ID",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "GET Nonexistent",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "POST Create Pet",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "PUT Update Pet",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE Pet",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    }
+  ]
+}

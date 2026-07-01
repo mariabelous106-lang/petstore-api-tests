@@ -7,6 +7,7 @@
 - Pytest
 - Requests
 - FastAPI (локальный сервер)
+- `postman/` — коллекция Postman для ручного тестирования API
 
 ## Установка и запуск
 

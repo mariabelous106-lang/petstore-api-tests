@@ -24,7 +24,7 @@ pytest -v
 
 ## Allure Report
 
-![Allure Report](<img width="1836" height="832" alt="Image" src="https://github.com/user-attachments/assets/8e3a699b-4f2f-47e1-a90d-89e316ea9863" />)
+![Allure Report](https://github.com/user-attachments/assets/8e3a699b-4f2f-47e1-a90d-89e316ea9863)
 
 Отчёт генерируется командой:
 ```bash

@@ -19,14 +19,16 @@ cd petstore-api-tests
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-uvicorn server:app --reload
 pytest -v
+```
 
 ## Allure Report
 
 ![Allure Report](https://github.com/user-attachments/assets/8e3a699b-4f2f-47e1-a90d-89e316ea9863)
 
-Отчёт генерируется командой:
+Отчёт генерируется командами:
+
 ```bash
 pytest --alluredir=allure-results
 allure serve allure-results
+```

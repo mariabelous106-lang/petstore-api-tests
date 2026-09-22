@@ -32,3 +32,11 @@ pytest -v
 pytest --alluredir=allure-results
 allure serve allure-results
 ```
+## Known Bugs in Petstore API
+
+Найдены и задокументированы через `xfail`-тесты:
+
+- **BUG-01:** API создаёт питомца с пустым именем (ожидался код 422, получен 200)
+- **BUG-02:** API авторизует пользователя с неверным паролем (ожидался код 401, получен 200)
+
+Тесты: `tests/test_pet.py::test_create_pet_with_empty_name`, `tests/test_user.py::test_login_with_wrong_password`

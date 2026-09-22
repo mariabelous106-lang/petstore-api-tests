@@ -2,8 +2,10 @@
 Тесты для эндпоинтов /user (пользователи).
 """
 import allure
+import pytest
 from jsonschema import validate
 from schemas.pet_schema import USER_SCHEMA
+
 
 @allure.feature("User")
 @allure.story("Create and get user")
@@ -32,10 +34,12 @@ def test_create_and_get_user(client):
         assert fetched_user["username"] == "testuser_qa"
         assert fetched_user["email"] == "test@example.com"
 
-    with allure.step("Удаляем пользователя после теста"):
-        client.delete_user(username="testuser_qa")
     with allure.step("Проверяем структуру ответа по JSON-схеме"):
         validate(instance=fetched_user, schema=USER_SCHEMA)
+
+    with allure.step("Удаляем пользователя после теста"):
+        client.delete_user(username="testuser_qa")
+
 
 @allure.feature("User")
 @allure.story("Login and logout")
@@ -75,3 +79,27 @@ def test_get_nonexistent_user(client):
 
     with allure.step("Проверяем, что сервер вернул 404"):
         assert response.status_code == 404, f"Ожидался 404, а пришёл {response.status_code}"
+
+
+@pytest.mark.xfail(reason="Petstore API allows login with wrong password (BUG-02)")
+@allure.feature("User")
+@allure.story("Login with wrong password")
+def test_login_with_wrong_password(client):
+    """Проверяем, что вход с неверным паролем не проходит."""
+    with allure.step("Создаём пользователя"):
+        user_payload = {
+            "id": 11111,
+            "username": "wrongpass_user",
+            "password": "correct123",
+            "userStatus": 1
+        }
+        client.create_user(user_payload)
+
+    with allure.step("Пробуем войти с неверным паролем"):
+        response = client.login(username="wrongpass_user", password="wrong_password")
+
+    with allure.step("Проверяем, что сервер вернул ошибку"):
+        assert response.status_code in [400, 401, 403], f"Ожидалась ошибка авторизации, а пришёл {response.status_code}"
+
+    with allure.step("Удаляем пользователя после теста"):
+        client.delete_user(username="wrongpass_user")

@@ -2,7 +2,8 @@
 Тесты для эндпоинтов /user (пользователи).
 """
 import allure
-
+from jsonschema import validate
+from schemas.pet_schema import USER_SCHEMA
 
 @allure.feature("User")
 @allure.story("Create and get user")
@@ -33,7 +34,8 @@ def test_create_and_get_user(client):
 
     with allure.step("Удаляем пользователя после теста"):
         client.delete_user(username="testuser_qa")
-
+    with allure.step("Проверяем структуру ответа по JSON-схеме"):
+        validate(instance=fetched_user, schema=USER_SCHEMA)
 
 @allure.feature("User")
 @allure.story("Login and logout")

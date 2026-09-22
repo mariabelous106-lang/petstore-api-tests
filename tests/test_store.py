@@ -2,7 +2,8 @@
 Тесты для эндпоинтов /store (заказы).
 """
 import allure
-
+from jsonschema import validate
+from schemas.pet_schema import ORDER_SCHEMA
 
 @allure.feature("Store")
 @allure.story("Get inventory")
@@ -49,7 +50,8 @@ def test_create_and_get_order(client):
 
     with allure.step("Удаляем заказ после теста"):
         client.delete_order(order_id=12345)
-
+    with allure.step("Проверяем структуру ответа по JSON-схеме"):
+        validate(instance=fetched_order, schema=ORDER_SCHEMA)
 
 @allure.feature("Store")
 @allure.story("Get nonexistent order")

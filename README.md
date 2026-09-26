@@ -1,8 +1,8 @@
+![Run API Tests](https://github.com/mariabelous106-lang/petstore-api-tests/actions/workflows/tests.yml/badge.svg)
+
 # Petstore API Tests
 
 Автотесты для тестового REST API на Python + Pytest + Requests.
-
-![Run API Tests](https://github.com/mariabelous106-lang/petstore-api-tests/actions/workflows/tests.yml/badge.svg)
 
 ## Стек
 - Python 3.14
